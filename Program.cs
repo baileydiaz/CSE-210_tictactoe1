@@ -27,10 +27,15 @@
         //  Best way to create a list
         List<string> board = new List<string>();
 
-        for (int i =1; i <= 9; i++)
-        {
-            board.Add(i.ToString());
-        }
+        board.Add("1");
+        board.Add("2");
+        board.Add("3");
+        board.Add("4");
+        board.Add("5");
+        board.Add("6");
+        board.Add("7");
+        board.Add("8");
+        board.Add("9");
         return board;
     }
 
@@ -38,11 +43,11 @@
     /// <param name="board">The board</param>
     static void DisplayBoard(List<string> board)
     {
-        Console.Write($"{board[0]}|{board[1]}|{board[2]}");
-        Console.Write("-+-+-");
-        Console.Write($"{board[3]}|{board[4]}|{board[5]}");
-        Console.Write("-+-+-");
-        Console.Write($"{board[6]}|{board[7]}|{board[8]}");
+        Console.WriteLine($"{board[0]}|{board[1]}|{board[2]}");
+        Console.WriteLine("-+-+-");
+        Console.WriteLine($"{board[3]}|{board[4]}|{board[5]}");
+        Console.WriteLine("-+-+-");
+        Console.WriteLine($"{board[6]}|{board[7]}|{board[8]}");
     }
 
     /// <summary>
@@ -52,7 +57,7 @@
     /// <returns>True if the game is over</returns>
     static bool IsGameOver(List<string> board)
     {
-        return false;
+        return IsWinner(board,"x") || IsWinner(board, "o")|| IsTie(board);
     }
 
     /// <summary>Determines if the provided player has a tic tac toe.</summary>
@@ -61,6 +66,36 @@
     /// <returns></returns>
     static bool IsWinner(List<string> board, string player)
     {
+        if ((board[0]) == player && board[1] == player && board[2] == player) {
+            return true;
+        }
+
+        if ((board[3]) == player && board[4] == player && board[5] == player) {
+            return true; 
+        }
+
+        if ((board[6]) == player && board[7] == player && board[8] == player) {
+            return true; 
+        }
+
+        if ((board[2]) == player && board[4] == player && board[6] == player) {
+            return true;
+        }
+
+        if ((board[0]) == player && board[4] == player && board[8] == player) {
+            return true; 
+        }
+
+        if ((board[0]) == player && board[3] == player && board[6] == player) {
+            return true;
+        }
+        if ((board[1]) == player && board[4] == player && board[7] == player) {
+            return true; 
+        }
+        if ((board[2]) == player && board[5] == player && board[8] == player) {
+            return true;
+        }
+
         return false;
     }
 
@@ -69,7 +104,38 @@
     /// <returns>True if the board is full.</returns>
     static bool IsTie(List<string> board)
     {
-        return false;
+        if (board.Contains("1")){
+            return false;
+        }
+    
+        if (board.Contains("2")){
+            return false;
+        }
+        if (board.Contains("3")){
+            return false;
+        }
+        if (board.Contains("4")){
+            return false;
+        }
+        if (board.Contains("5")){
+            return false;
+        }
+        if (board.Contains("6")){
+            return false;
+        }
+        if (board.Contains("7")){
+            return false;
+        }
+        if (board.Contains("8")){
+            return false;
+        }
+        if (board.Contains("9"))
+            {
+            return false;
+            }
+        else{
+            return true;
+        }
     }
 
     /// <summary>Cycles through the players (from x to o and o to x)</summary>
@@ -77,7 +143,13 @@
     /// <returns>The next players sign (x or o)</returns>
     static string GetNextPlayer(string currentPlayer)
     {
-        return "x";
+        if (currentPlayer == "o"){
+            return "x";
+            }
+
+        else {
+            return "x";
+        }
     }
 
     /// <summary>Gets the 1-based spot number associated with the user's choice.</summary>
@@ -97,7 +169,7 @@
     /// <param name="currentPlayer">The current player's sign (x or o)</param>
     static void MakeMove(List<string> board, int choice, string currentPlayer)
     {
-
+        
     }
 }
 
